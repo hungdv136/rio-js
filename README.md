@@ -32,13 +32,13 @@ This repository provides examples how to use [Rio](https://github.com/hungdv136/
 
 Assume that you are trying to write integration test for your API `POST /checkout` which depends on an external payment API `/pay`. To make it simple, this API forwards request to 3rd party API, then returns responded data from 3rd party back to the caller. See [example/index.ts](src/server/index.ts) for more details. 
 
-Run the below command to start Rio and your example API server before running your test suites. In the real world scenario, you don't need to setup these steps because your API and mock server (Rio) are already deployed in testing environment
+Run the below command to start Rio and your example API server before running your test suites
 
 ```bash
 make up
 ```
 
-Verify whether your test API is ready 
+Verify whether your API is ready 
 
 ```bash
 curl http://localhost:8808/ping
@@ -49,6 +49,8 @@ Verify whether Rio is ready
 ```bash
 curl http://localhost:8896/ping
 ```
+
+In the real world scenario, you don't need to setup these steps because your API and mock server (Rio) are already deployed in testing environment. Instead, you need to configure the root URL of 3rd party API to Rio mock server
 
 ## Write your tests
 
@@ -106,7 +108,7 @@ curl --location 'http://localhost:8808/checkout' \
 
 ### Write automation tests
 
-See [example](example/checkout.test.ts)
+See [example](src/example/checkout.test.ts)
 
 ```bash
 make test
