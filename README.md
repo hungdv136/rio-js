@@ -16,12 +16,12 @@ Assume you want to write integration tests for an API which is dependent on 3rd 
 
 ![Component](docs/component.png)
 
-This repository provides examples how to use [Rio](https://github.com/hungdv136/rio) as mock server to simulate HTTP/gRPC systems. Note that this is not for mocking dependency for unit test in a JS based application
+This repository provides examples how to use [Rio](https://github.com/hungdv136/rio) as mock server to simulate HTTP/gRPC systems. Note that this is not for mocking HTTP for unit test in a JS based application
 
 ## Why mock?
 
 - Create stable test suites by isolating your system with 3rd parties
-- Able to verify diversed scenarios
+- Able to simulate diversed scenarios to test how your system handles responses
 
 ## Install
 
