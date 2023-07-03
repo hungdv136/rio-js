@@ -30,7 +30,7 @@ Assume you want to write integration tests for an API which is dependent on 3rd 
 
 ## Start API server
 
-Assume that you are trying to write integration test for your API `POST /checkout` which depends on an external API for payment. See [Index](src/server/index.ts) for more details. Run the below command to start Rio and your example API server before running your test suites
+Assume that you are trying to write integration test for your API `POST /checkout` which depends on an external API for payment. To make it simple, this API forwards request to 3rd party API, then returns responded data from 3rd party back to the caller. See [Index](src/server/index.ts) for more details. Run the below command to start Rio and your example API server before running your test suites
 
 ```bash
 make up
@@ -84,13 +84,14 @@ curl --location 'http://localhost:8896/stub/create_many' \
           "id": "bfd4ea04-f2ad-444b-b672-9b739d0546fc",
           "createdAt": "2023-07-03T08:17:24Z"
         }
-      }
+      },
+      "active": true
     }
   ]
 }'
 ```
 
-Perform a test to API 
+Perform a CURL to test to API 
 
 ```bash
 curl --location 'http://localhost:8808/checkout' \
@@ -102,6 +103,8 @@ curl --location 'http://localhost:8808/checkout' \
 ```
 
 ### Write automation tests
+
+- TBD
 
 ## Debug
 
