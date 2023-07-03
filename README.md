@@ -118,8 +118,16 @@ make test
 
 - Get Rio's logs: `make rio-logs`
 
-- List defined stubs: `curl http://localhost:8896/stub/list`
+- List defined stubs
 
-- List of receiving requests: `curl -X POST http://localhost:8896/incoming_request/list`
+```bash
+curl http://localhost:8896/stub/list
+```
+
+- List of received requests
+
+```bash
+curl -X POST http://localhost:8896/incoming_request/list
+```
 
 - Cleanup environment: `make rio-down`
