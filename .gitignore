@@ -1,2 +1,2 @@
-src/server/node_modules/
-src/server/dist/
+**/node_modules/
+**/dist/

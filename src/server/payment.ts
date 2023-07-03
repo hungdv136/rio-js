@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // The root URL of payment API. Default is Rio URL
 // In the real system, this value is configured in your configuration management
-// You should to change the to Rio root URL with format http://rio-domain/echo
+// You should to change the to Rio root URL with format http://<rio-domain>/echo
 const paymentURL = process.env.PAYMENT_URL || 'http://localhost:8896/echo';
 
 export type PayRequest = {

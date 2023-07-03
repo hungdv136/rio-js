@@ -29,3 +29,9 @@ server-up:
 	@(cd && npm run build)
 	@(cd && npm run dev)
 .PHONY: server-up
+
+# Run integration test
+test:
+	@(cd src/example && npm install)
+	@(cd src/example && npm test)
+.PHONY: test

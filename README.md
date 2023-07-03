@@ -4,7 +4,7 @@
   - [Introduction](#introduction)
   - [Why mock?](#why-mock)
   - [Install](#install)
-  - [Start API server](#start-api-server)
+  - [Start example API server](#start-example-api-server)
   - [Write your tests](#write-your-tests)
     - [Manual tests](#manual-tests)
     - [Write automation tests](#write-automation-tests)
@@ -12,25 +12,27 @@
 
 ## Introduction
 
-Assume you want to write integration tests for an API which is dependent on 3rd party API as the below diagram. This repository provides examples how to use [Rio](https://github.com/hungdv136/rio) as mock server to mock dependent HTTP/gRPC systems
+Assume you want to write integration tests for an API which is dependent on 3rd party API as the below diagram, these are deployed in different servers
 
 ![Component](docs/component.png)
 
-***Note:*** This is not for mocking dependency for unit test in a JS based application
+This repository provides examples how to use [Rio](https://github.com/hungdv136/rio) as mock server to simulate HTTP/gRPC systems. Note that this is not for mocking dependency for unit test in a JS based application
 
 ## Why mock?
 
-- Create a stable test suites by isolating your system with 3rd parties
-- Able to verify diversed scenario
+- Create stable test suites by isolating your system with 3rd parties
+- Able to verify diversed scenarios
 
 ## Install
 
 - Docker
 - NodeJS: 18+
 
-## Start API server
+## Start example API server
 
-Assume that you are trying to write integration test for your API `POST /checkout` which depends on an external API for payment. To make it simple, this API forwards request to 3rd party API, then returns responded data from 3rd party back to the caller. See [Index](src/server/index.ts) for more details. Run the below command to start Rio and your example API server before running your test suites
+Assume that you are trying to write integration test for your API `POST /checkout` which depends on an external API for payment. To make it simple, this API forwards request to 3rd party API, then returns responded data from 3rd party back to the caller. See [example/index.ts](src/server/index.ts) for more details. 
+
+Run the below command to start Rio and your example API server before running your test suites
 
 ```bash
 make up
@@ -104,7 +106,11 @@ curl --location 'http://localhost:8808/checkout' \
 
 ### Write automation tests
 
-- TBD
+See [example](example/checkout.test.ts)
+
+```bash
+make test
+```
 
 ## Debug
 
