@@ -12,11 +12,11 @@
 
 ## Introduction
 
-Assume you want to write integration tests for an API which is dependent on 3rd party API as the below diagram, these are deployed in different servers
+Assume you want to perform integration tests for an API which is dependent on a 3rd party API, these services are deployed on different testing servers as the diagram below
 
 ![Component](docs/component.png)
 
-This repository provides examples how to use [Rio](https://github.com/hungdv136/rio) as mock server to simulate HTTP/gRPC systems. Note that this is not for mocking HTTP for unit test in a JS based application
+This repository provides examples how to use [Rio](https://github.com/hungdv136/rio) as mock server to simulate HTTP/gRPC systems. Note that this is **NOT recommended to mock HTTP request for unit tests** in a JS based application
 
 ## Why mock?
 
