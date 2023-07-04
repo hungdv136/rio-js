@@ -12,7 +12,7 @@
 
 ## Introduction
 
-Assume you want to perform integration tests for an API which is dependent on a 3rd party API, these services are deployed on different testing servers as the diagram below
+Suppose you want to perform integration tests for an API which is dependent on a 3rd party API, these services are deployed on different testing servers as the diagram below
 
 ![Component](docs/component.png)
 
