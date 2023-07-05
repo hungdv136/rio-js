@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
+  sdk-lint:
     runs-on: ubuntu-latest
     name: sdk-lint
     steps:
@@ -26,7 +26,7 @@ jobs:
       - name: Run lint
         run: make sdk-lint
 
-  test:
+  sdk-test:
     name: sdk-test
     runs-on: ubuntu-latest
     steps:
