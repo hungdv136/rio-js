@@ -1,3 +1,9 @@
+import {
+  ContentTypeJSON,
+  ContentTypeMultiPart,
+  ContentTypeURLEncoded
+} from './constant';
+
 // All matching rules
 export class RequestMatching {
   // Request method GET, POST, PUT, DELETE, PATCH
@@ -113,27 +119,27 @@ export interface BodyRule {
 // Example: new Stub().withRequestBody(JSONPathRule('$.level1.level2', Rule.equalsTo('<expected-value>')))
 export function JSONPathRule(keyPath: string, rule: Rule): BodyRule {
   return {
-    contentType: 'application/json',
+    contentType: ContentTypeJSON,
     keyPath: keyPath,
     operator: rule
   };
 }
 
-// Matches request body by form field in multiple parts request
+// Matches request body by form field for multiple parts request
 // Example: new Stub().withRequestBody(MultiPartFormRule('<fiel-name>', Rule.contains('<expected-value>')))
 export function MultiPartFormRule(keyPath: string, rule: Rule): BodyRule {
   return {
-    contentType: 'multipart/form-data',
+    contentType: ContentTypeMultiPart,
     keyPath: keyPath,
     operator: rule
   };
 }
 
-// Verifies form value in url encoded request
+// Verifies request body by field name for url encoded form data request
 // Example: new Stub().withRequestBody(URLEncodedBodyRule('<fiel-name>', Rule.notEmpty()))
 export function URLEncodedBodyRule(keyPath: string, rule: Rule) {
   return {
-    contentType: "application/x-www-form-urlencoded",
+    contentType: ContentTypeURLEncoded,
     keyPath: keyPath,
     operator: rule
   };

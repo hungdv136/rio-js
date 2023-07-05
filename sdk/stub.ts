@@ -47,8 +47,10 @@ export class Stub {
 
   updatedAt: Date;
 
-  constructor() {
+  constructor(method: string, urlRule: Rule) {
     this.request = new RequestMatching();
+    this.request.method = method;
+    this.request.url.push(urlRule);
     this.active = true;
   }
 
@@ -86,7 +88,7 @@ export class Stub {
   // Deactivates when matched and used for an incoming request
   // This can be combined with withWeight to simulate different responses
   shouldDeactivateWhenMatched() {
-    if (this.settings == undefined) {
+    if (!this.settings) {
       this.settings = new StubSettings();
     }
 
@@ -97,7 +99,7 @@ export class Stub {
   // Sets delay duration in milliseconds
   // Use this to simulate the slow API response time
   shouldDelay(d: number) {
-    if (this.settings == undefined) {
+    if (!this.settings) {
       this.settings = new StubSettings();
     }
 
@@ -109,7 +111,7 @@ export class Stub {
   // Sets the root url of the target API
   // Incoming equests will be forwarded to the given url with the same relative path
   withTargetURL(url: string) {
-    if (this.proxy == undefined) {
+    if (!this.proxy) {
       this.proxy = new StubProxy();
     }
 
@@ -120,7 +122,7 @@ export class Stub {
   // Enables recording request and response when proxies is enabled
   // The recorded data will be serialized to an inactive stub and saved to stubs table
   withEnableRecord(v: boolean) {
-    if (this.proxy === undefined) {
+    if (!this.proxy) {
       this.proxy = new StubProxy();
     }
 
@@ -161,18 +163,37 @@ export class Stub {
 
   // Sets the expected response
   willReturn(res: StubResponse) {
-    this.response = res
-    return this 
+    this.response = res;
+    return this;
   }
 
   // Converts to a JSON string
   toJSON() {
-    return JSON.stringify(camelCaseToSnakeCase(this));
+    return JSON.stringify(this.toSnakeCase());
+  }
+
+  // Return a copied object with snake case
+  toSnakeCase(): Stub {
+    const obj = camelCaseToSnakeCase(this);
+
+    // TODO: Find another way to ignore input data
+    if (this.response) {
+      obj.response.body = this.response.body;
+      obj.response.header = this.response.header;
+
+      if (this.response.error && this.response.error.details) {
+        for (let i = 0; i < this.response.error.details.length; i++) {
+          obj.response.error.details[i] = this.response.error.details[i];
+        }
+      }
+    }
+
+    return obj;
   }
 
   // Submits stub to a remote server
   send(server: Server) {
-    return server.createStub(camelCaseToSnakeCase(this));
+    return server.createStub(this.toSnakeCase());
   }
 }
 
