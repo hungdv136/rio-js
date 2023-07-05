@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
-import { clearStubs, createStubs } from './mocking'; 
+import { Server } from '../sdk/server'; 
 
 // Your checkout API
 const checkoutURL =  'http://localhost:8808/checkout';
+const mockServer = new Server('http://localhost:8896');
 
 describe('POST /checkout', () => {
   // Create random data
@@ -14,10 +15,10 @@ describe('POST /checkout', () => {
 
   beforeAll(async () => {
     try {
-      await clearStubs();
+      await mockServer.clearStubs();
       
       // Create a stub which matches method, url and request body (stubs -> request)
-      const stubs = {
+      const stub = {
         request: {
           method: 'POST',
           url: [{
@@ -46,7 +47,7 @@ describe('POST /checkout', () => {
         active: true
       };
 
-      await createStubs(stubs);
+      await mockServer.createStub(stub);
     } catch(error) {
       console.log('setup error: ', error);
     }

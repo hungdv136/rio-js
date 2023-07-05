@@ -1,0 +1,43 @@
+name: sdk-ci
+
+on:
+  push:
+    branches:
+      - "**"
+
+concurrency:
+  group: branch-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sdk-lint:
+    runs-on: ubuntu-latest
+    name: sdk-lint
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      
+      - name: npm install
+        run: make sdk-install
+
+      - name: Run lint
+        run: make sdk-lint
+
+  sdk-test:
+    name: sdk-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: npm install
+        run: make sdk-install
+
+      - name: Run test
+        run: make sdk-test
