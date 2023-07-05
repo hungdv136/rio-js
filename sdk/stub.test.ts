@@ -182,7 +182,7 @@ describe('end to end test stub', () => {
           {
             "name": "cookie-id",
             "value": "<res-cookie-value>",
-            "expired_at": "2023-12-16T20:24:00.000Z"
+            "expired_at": "2023-12-17T03:24:00.000Z"
           }
         ],
         "status_code":200
@@ -194,7 +194,7 @@ describe('end to end test stub', () => {
         .withCookie(
           'cookie-id',
           '<res-cookie-value>',
-          new Date('2023-12-17T03:24:00')
+          new Date('2023-12-17T03:24:00.000Z')
         )
         .withHeader('header-field', 'res-header-value')
         .withStatusCode(200)
