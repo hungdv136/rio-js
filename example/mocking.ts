@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-// This is the root url of Rio mocking server
-// In the real world, Rio will be deployed in a remote server
-// You must replace this value by Rio domain in thay case
+// This is the root url of Rio of the mocking server
+// In the real world test suites, Rio will be deployed in a server
+// It can be accessible by other modules
 const mockURL = 'http://localhost:8896'
 
 export function clearStubs() {
