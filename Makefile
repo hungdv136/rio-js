@@ -46,8 +46,8 @@ sdk-test:
 
 sdk-format:
 	@(cd sdk && npm run format)
-.PHONY: sdk-format:
+.PHONY: sdk-format
 
 sdk-lint:
 	@(cd sdk && npm run lint)
-.PHONY: sdk-lint:
+.PHONY: sdk-lint
