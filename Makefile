@@ -35,9 +35,12 @@ test:
 	@(cd example && npm test)
 .PHONY: test
 
+sdk-install:
+	@(cd sdk && npm install)
+.PHONY: sdk-install
+
 # Run test for SDK
 sdk-test:
-	@(cd sdk && npm install)
 	@(cd sdk && npm test)
 .PHONY: sdk-test
 
