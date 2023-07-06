@@ -1,5 +1,15 @@
-import { ContentTypeJSON, HeaderContentType, HeaderLocation } from './constant';
+import {
+  ContentTypeHTML,
+  ContentTypeJSON,
+  ContentTypeXML,
+  HeaderContentType,
+  HeaderLocation
+} from './constant';
 import { TSMap } from 'typescript-map';
+import { Buffer } from 'buffer';
+
+const base64Encode = (str: string): string =>
+  Buffer.from(str, 'binary').toString('base64');
 
 // This is a convenient function to initialize a response with JSON content type
 // Example: new Stub().willReturn(JSONResponse({fieldData: "field_value"}))
@@ -8,15 +18,28 @@ export function JSONResponse(obj: object) {
   return r.withBody(ContentTypeJSON, obj);
 }
 
+// This is a convenient function to initialize a response with HTML content type
+// Example: new Stub().willReturn(HTMLResponse('<html></html>'))
+export function HTMLResponse(content: string) {
+  const r = new StubResponse();
+  return r.withBody(ContentTypeHTML, base64Encode(content));
+}
+
+// This is a convenient function to initialize a response with XML content type
+// Example: new Stub().willReturn(HTMLResponse('<xml></xml>'))
+export function XMLResponse(content: string) {
+  const r = new StubResponse();
+  return r.withBody(ContentTypeXML, base64Encode(content));
+}
+
 export class StubResponse {
   // Required. Define the response status code
   // GRPC. Default 0 OK: https://grpc.github.io/grpc/core/md_doc_statuscodes.html
   // HTTP. Default 200 OK: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
   statusCode: number;
 
-  // Body defines response body
-  // Client can submit raw JSON object or base64 encoded string for HTML, XML, ... via API
-  // If client submits stubs using YAML format via API, then raw string can be used for any text based content
+  // Holds expected response body
+  // Format must be either raw JSON object or base64 encoded string for HTML, XML, binary...
   body: string | object | Map<string, any>;
 
   // This is the id of uploaded file that can be used to simulate the download

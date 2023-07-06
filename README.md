@@ -27,7 +27,7 @@ This repository provides examples how to use [Rio](https://github.com/hungdv136/
 
 ## Structure
 
-- sdk: TypeScript SDK to create and submit stubs to Rio remote server
-- example: Examples for using SDK and raw JSON
-- server: A sample test target API
-- docker: A docker-compose example to deploy Rio
+- [sdk](./sdk/README.md): TypeScript SDK to create and submit stubs to Rio remote server
+- [example](./example/README.md): Examples for using SDK and raw JSON
+- [server](./server/README.md): A sample test target API
+- [docker](docker): A docker-compose example to deploy Rio
