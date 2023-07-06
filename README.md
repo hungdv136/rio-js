@@ -1,7 +1,6 @@
 # Use Rio as a mock server to test Rest API
 
 [![sdk-ci](https://github.com/hungdv136/rio-js/actions/workflows/ci.yml/badge.svg)](https://github.com/hungdv136/rio-js/actions/workflows/ci.yml)
-
 [![sdk-publish](https://github.com/hungdv136/rio-js/actions/workflows/release.yml/badge.svg)](https://github.com/hungdv136/rio-js/actions/workflows/release.yml)
 
 - [Use Rio as a mock server to test Rest API](#use-rio-as-a-mock-server-to-test-rest-api)
