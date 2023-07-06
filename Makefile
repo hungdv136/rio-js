@@ -1,11 +1,11 @@
 
 # A single command to start API server and mock server
-up:
+example-up:
 	@docker compose -f docker/compose.yaml up -d
-	@(cd server && npm install)
-	@(cd server && npm run build)
-	@(cd server && npm run dev)
-.PHONY: up
+	@(cd example/server && npm install)
+	@(cd example/server && npm run build)
+	@(cd example/server && npm run dev)
+.PHONY: example-up
 
 # Start Rio and its dependencies (SQL)
 rio-up:
@@ -24,16 +24,16 @@ rio-logs:
 
 # Start API server to simulate test target API
 server-up:
-	@(cd server && npm install)
-	@(cd && npm run build)
-	@(cd && npm run dev)
+	@(cd example/server && npm install)
+	@(cd example/server && npm run build)
+	@(cd example/server && npm run dev)
 .PHONY: server-up
 
 # Run example integration tests
-test:
+example-test:
 	@(cd example && npm install)
 	@(cd example && npm test)
-.PHONY: test
+.PHONY: example-test
 
 sdk-install:
 	@(cd sdk && npm install)

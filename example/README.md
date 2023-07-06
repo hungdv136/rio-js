@@ -15,12 +15,12 @@
 
 ## Setup
 
-Suppose that you are trying to write integration test for your API `POST /checkout` which depends on an external payment API `/pay`. To make it simple, this API forwards request to 3rd party API, then returns responded data from 3rd party back to the caller. See [example/index.ts](server/index.ts) for more details. 
+Suppose that you are trying to write integration test for your API `POST /checkout` which depends on an external payment API `/pay`. To make it simple, this API forwards request to 3rd party API, then returns responded data from 3rd party back to the caller. See [example/server/index.ts](example/server/index.ts) for more details. 
 
 Run the below command to start Rio and your example API server before running your test suites
 
 ```bash
-make up
+make example-up
 ```
 
 Verify whether your test API is ready 
@@ -96,7 +96,7 @@ curl --location 'http://localhost:8808/checkout' \
 See [example](example/checkout.test.ts)
 
 ```bash
-make test
+make example-test
 ```
 
 ## Debug

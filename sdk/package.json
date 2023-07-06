@@ -1,6 +1,6 @@
 {
   "name": "rio-mock-sdk",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "format": "prettier --config .prettierrc '**/*.ts' --write",
@@ -8,6 +8,7 @@
     "build": "npx tsc"
   },
   "devDependencies": {
+    "@jsdevtools/npm-publish": "^2.2.0",
     "@types/jest": "^29.5.2",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
