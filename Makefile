@@ -39,6 +39,11 @@ sdk-install:
 	@(cd sdk && npm install)
 .PHONY: sdk-install
 
+sdk-build:
+	@(cd sdk && rm -R -f dist)
+	@(cd sdk && npm run build)
+.PHONY: sdk-build
+
 # Run test for SDK
 sdk-test:
 	@(cd sdk && npm test)
