@@ -148,16 +148,14 @@ export class Stub {
     return this;
   }
 
-  // Add a rule to match by request body
-  withRequestBody(rule: BodyRule) {
-    this.request.body.push(rule);
-    return this;
-  }
-
-  // This is a shortcut function to add matching rule with JSON path
-  // It is equivalent to withRequestBody(JSONPathRule('<keyPath>', rule))
-  withRequestBodyJSONPath(keyPath: string, rule: Rule) {
-    this.request.body.push(JSONPathRule(keyPath, rule));
+  // Add rules to match by request body
+  // For example:
+  //   .withRequestBody(
+  //     JSONPathRule('$.cardNumber', Rule.equalsTo(validCardNumber)),
+  //     JSONPathRule('$.amount', Rule.equalsTo(30000))
+  //   )
+  withRequestBody(...rules: BodyRule[]) {
+    this.request.body.push(...rules);
     return this;
   }
 

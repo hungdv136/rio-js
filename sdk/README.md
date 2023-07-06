@@ -13,15 +13,17 @@ it('checkout API', () => {
     const validCardNumber = uuidv4();
     const expectedId = uuidv4();
 
-    // Submit a stub to mock server
+    // Submit a stub to simulate 3rd party response
     await new Stub()
         .withDescription('stub for mocking pay API')
-        .withRequestBodyJSONPath('$.cardNumber', Rule.equalsTo(validCardNumber))
-        .withRequestBodyJSONPath('$.amount', Rule.equalsTo(30000))
-        .willReturn(JSONResponse({id: expectedId}))
+        .withRequestBody(
+            JSONPathRule('$.cardNumber', Rule.equalsTo(validCardNumber)),
+            JSONPathRule('$.amount', Rule.equalsTo(30000))
+        )
+        .willReturn(JSONResponse({id: expectedId, amount: 30000}))
         .send(mockServer);
     
-    // Your test
+    // Your test case
     const params = { cardNumber: validCardNumber, amount: 30000}
     const { data, status } = await axios.post(checkoutURL, params);
     expect(status).toBe(200)
@@ -29,4 +31,4 @@ it('checkout API', () => {
 });
 ```
 
-See [example](../example/) for end to end example
+See [example](../example/checkout-sdk.test.ts) for end to end example
