@@ -17,7 +17,7 @@ jobs:
       - name: npm install
         run: make sdk-install
 
-      - run: npm run build
+      - run: make sdk-build
 
       - name: Publish
         uses: JS-DevTools/npm-publish@v1
