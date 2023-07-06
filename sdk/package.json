@@ -1,8 +1,11 @@
 {
+  "name": "rio-mock-sdk",
+  "version": "1.0.0",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "format": "prettier --config .prettierrc '**/*.ts' --write",
-    "test": "jest --coverage --coverageReporter=text-summary"
+    "test": "jest --coverage --coverageReporter=text-summary",
+    "build": "npx tsc"
   },
   "devDependencies": {
     "@types/jest": "^29.5.2",

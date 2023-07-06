@@ -1,9 +1,14 @@
 import { Stub } from './stub';
-import { MultiPartFormRule, Rule, URLEncodedBodyRule } from './matching-rule';
-import { JSONResponse } from './response';
+import {
+  JSONPathRule,
+  MultiPartFormRule,
+  Rule,
+  URLEncodedBodyRule
+} from './matching-rule';
+import { HTMLResponse, JSONResponse } from './response';
 
 describe('end to end test stub', () => {
-  it('json request body', () => {
+  it('all properties', () => {
     const expectedJSON = JSON.parse(`{
       "request": {
         "url": [
@@ -46,22 +51,14 @@ describe('end to end test stub', () => {
             }
           }
         ],
-        "body": [
-          {
-            "content_type": "application/json",
-            "key_path": "$.name",
-            "operator": {
-              "name": "equal_to",
-              "value": "<body json field>"
-            }
-          }
-        ],
+        "body": [],
         "method": "GET"
       },
       "active": true,
       "description": "example stub",
       "weight": 10,
       "namespace": "example ns",
+      "tag": "<tag value>",
       "settings": {
         "delay_duration": 2000000
       },
@@ -75,14 +72,48 @@ describe('end to end test stub', () => {
       .withDescription('example stub')
       .withWeight(10)
       .withNamespace('example ns')
+      .withTag('<tag value>')
       .shouldDelay(2)
       .withHeader('X-REQUEST-ID', Rule.equalsTo('<id>'))
       .withHeader('Authorization', Rule.contains('<token>'))
       .withQuery('request-id', Rule.notContains('<request-id>'))
       .withCookie('session-id', Rule.notContains('<session-id>'))
       .withTargetURL('http://payment')
-      .withEnableRecord(true)
-      .withRequestBodyJSONPath('$.name', Rule.equalsTo('<body json field>'));
+      .withEnableRecord(true);
+
+    expect(stub.toJSON()).toBe(JSON.stringify(expectedJSON));
+  });
+
+  it('json request body', () => {
+    const expectedJSON = JSON.parse(`{
+      "request": {
+        "url": [
+          {
+            "name": "contains",
+            "value": "/animal"
+          }
+        ],
+        "header": [],
+        "cookie": [],
+        "query": [],
+        "body": [
+          {
+            "content_type": "application/json",
+            "key_path": "$.name",
+            "operator": {
+              "name": "equal_to",
+              "value": "<body json field>"
+            }
+          }
+        ],
+        "method": "GET"
+      },
+      "active": true
+    }`);
+
+    const stub = new Stub('GET', Rule.contains('/animal')).withRequestBody(
+      JSONPathRule('$.name', Rule.equalsTo('<body json field>'))
+    );
 
     expect(stub.toJSON()).toBe(JSON.stringify(expectedJSON));
   });
@@ -198,6 +229,37 @@ describe('end to end test stub', () => {
         )
         .withHeader('header-field', 'res-header-value')
         .withStatusCode(200)
+    );
+
+    expect(stub.toJSON()).toBe(JSON.stringify(expectedJSON));
+  });
+
+  it('html response body', () => {
+    const expectedJSON = JSON.parse(`{
+      "request": {
+        "url": [
+          {
+            "name": "contains",
+            "value": "/animal"
+          }
+        ],
+        "header": [],
+        "cookie": [],
+        "query": [],
+        "body": [],
+        "method": "POST"
+      },
+      "active": true,
+      "response": {
+        "body": "PGh0bWw+Y29udGVudDwvaHRtbD4=",
+        "header": {
+          "Content-Type": "text/html"
+        }
+      }
+    }`);
+
+    const stub = new Stub('POST', Rule.contains('/animal')).willReturn(
+      HTMLResponse(`<html>content</html>`)
     );
 
     expect(stub.toJSON()).toBe(JSON.stringify(expectedJSON));

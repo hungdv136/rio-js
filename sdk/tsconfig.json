@@ -6,6 +6,12 @@
     "forceConsistentCasingInFileNames": true, 
     "strictPropertyInitialization": false,           
     "strict": true,                                      
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "outDir": "dist"
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "jest.config.ts"
+  ]
 }
