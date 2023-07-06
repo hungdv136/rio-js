@@ -2,7 +2,7 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { Server } from '../sdk/server';
 
-// Your checkout API
+// Your checkout API, read README.md file to start dependencies
 const checkoutURL = 'http://localhost:8808/checkout';
 const mockServer = new Server('http://localhost:8896');
 
