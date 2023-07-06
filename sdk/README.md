@@ -1,5 +1,7 @@
 # Typescript SDK for Rio HTTP mocking
 
+This is TypeScript SDK for [Rio](https://github.com/hungdv136/rio) HTTP/gRPC mock
+
 ## Examples
 
 ```ts

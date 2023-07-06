@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@jsdevtools/npm-publish": "^2.2.0"
+  }
+}
