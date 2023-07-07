@@ -1,21 +1,23 @@
 # Examples for using Rio to write integration test
 
 - [Examples for using Rio to write integration test](#examples-for-using-rio-to-write-integration-test)
-  - [Install](#install)
+  - [Prerequisites](#prerequisites)
   - [Setup](#setup)
   - [Write tests](#write-tests)
     - [Manual tests](#manual-tests)
     - [Write automation tests](#write-automation-tests)
   - [Debug](#debug)
 
-## Install
+## Prerequisites
 
 - Docker
 - NodeJS: 18+
 
 ## Setup
 
-Suppose that you are trying to write integration test for your API `POST /checkout` which depends on an external payment API `/pay`. To make it simple, this API forwards request to 3rd party API, then returns responded data from 3rd party back to the caller. See [example/server/index.ts](example/server/index.ts) for more details. 
+Suppose that you are trying to write integration test for your API `POST /checkout`, this system under test is deployed on your testing environment. To make it simple, this API forwards request to a 3rd party API `POST /pay`, then returns responded data from 3rd party back to the caller. See [example/server/index.ts](example/server/index.ts) for more details
+
+![Component](../docs/component.png)
 
 Run the below command to start Rio and your example API server before running your test suites
 
