@@ -15,7 +15,7 @@
 
 ## Setup
 
-Suppose that you are trying to write integration test for your API `POST /checkout`, this system under test is deployed on your testing environment. To make it simple, this API forwards request to a 3rd party API `POST /pay`, then returns responded data from 3rd party back to the caller. See [example/server/index.ts](example/server/index.ts) for more details
+Suppose that you are trying to write integration test for your API `POST /checkout`, this system under test is deployed on your testing environment. To make it simple, this API forwards request to a 3rd party API `POST /pay`, then returns responded data from 3rd party back to the caller. See [server/index.ts](server/index.ts) for more details
 
 ![Component](../docs/component.png)
 
