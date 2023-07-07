@@ -95,7 +95,7 @@ curl --location 'http://localhost:8808/checkout' \
 
 ### Write automation tests
 
-See [example](example/checkout.test.ts)
+See [example](sdk-install.test.ts)
 
 ```bash
 make example-test
