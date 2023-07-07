@@ -5,7 +5,6 @@
 - [Use Rio as a mock server to test Rest API](#use-rio-as-a-mock-server-to-test-rest-api)
   - [Introduction](#introduction)
   - [Why mock?](#why-mock)
-  - [Install](#install)
   - [Structure](#structure)
 
 ## Introduction
@@ -21,13 +20,9 @@ This repository provides examples how to use [Rio](https://github.com/hungdv136/
 - Create stable test suites by isolating your system with 3rd parties
 - Able to simulate diversed scenarios to test how your system handles responses
 
-## Install
-
-- NodeJS: 18+
-
 ## Structure
 
-- [sdk](./sdk/README.md): TypeScript SDK to create and submit stubs to Rio remote server
-- [example](./example/README.md): Examples for using SDK and raw JSON
-- [server](./server/README.md): A sample test target API
+- [sdk](./sdk/README.md): TypeScript SDK to build and submit stubs to Rio remote server
+- [example](./example/README.md): Examples for using Postman or SDK in JavaScript/TypeScript
+- [server](./example/server/README.md): A sample test target API
 - [docker](docker): A docker-compose example to deploy Rio

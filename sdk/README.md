@@ -2,16 +2,23 @@
 
 This is TypeScript SDK for [Rio](https://github.com/hungdv136/rio) HTTP/gRPC mock
 
+## Prerequisites
+
+- NodeJS v18+
+- Rio Mmck server v1.2.3+: See [example](../example/README.md) to how to deploy locally
+
 ## How to use 
 
 ```bash
 npm install rio-ts-sdk
 ```
 
+Avaliable features/syntax are documented in [Rio](httts://github.com/hungdv136/rio)
+
 ## Examples
 
 ```ts
-import { Rule, JSONResponse, Stub } from 'rio-ts-sdk';
+import { Rule, JSONPathRule, JSONResponse, Stub } from 'rio-ts-sdk';
 
 const mockServer = new Server('http://localhost:8896');
 
@@ -44,7 +51,9 @@ See [example](../example/checkout-sdk.test.ts) for end to end example
 ## Dynamic Response
 
 ```ts
-    // Create a stub to test dynamic response
+    // The response can be built programmatically based on the request 
+    // - .Request.XXX (Cookies, Header, ..)
+    // - .JSONBody.<json_field_name>.<json_field_name_child>
     const res = JSONResponse({});
     res.template = new Template();
     res.template.script = `
@@ -72,3 +81,4 @@ See [example](../example/checkout-sdk.test.ts) for end to end example
 ```
 
 See [example](../example/sdk-install.test.ts) for end to end example of dynamic response
+
