@@ -13,9 +13,9 @@ app.get('/ping', (req: Request, res: Response) => {
 });
 
 app.post('/checkout', async (req: Request, res: Response) => {
-  const reqParam: PayRequest = req.body
-  const data = await pay(reqParam)
-  res.send(data)
+  const reqParam: PayRequest = req.body;
+  const data = await pay(reqParam);
+  res.send(data);
 });
 
 app.listen(port, () => {

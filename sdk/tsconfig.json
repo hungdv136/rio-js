@@ -9,10 +9,5 @@
     "skipLibCheck": true,
     "outDir": "dist",
     "declaration": true,
-  },
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "jest.config.ts"
-  ]
+  }
 }

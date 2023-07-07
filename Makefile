@@ -2,9 +2,9 @@
 # A single command to start API server and mock server
 example-up:
 	@docker compose -f docker/compose.yaml up -d
-	@(cd example/server && npm install)
-	@(cd example/server && npm run build)
-	@(cd example/server && npm run dev)
+	@(cd example && npm install)
+	@(cd example && npm run build)
+	@(cd example && npm run dev)
 .PHONY: example-up
 
 # Start Rio and its dependencies (SQL)
@@ -24,9 +24,9 @@ rio-logs:
 
 # Start API server to simulate test target API
 server-up:
-	@(cd example/server && npm install)
-	@(cd example/server && npm run build)
-	@(cd example/server && npm run dev)
+	@(cd example && npm install)
+	@(cd example && npm run build)
+	@(cd example && npm run dev)
 .PHONY: server-up
 
 # Run example integration tests
@@ -56,3 +56,10 @@ sdk-format:
 sdk-lint:
 	@(cd sdk && npm run lint)
 .PHONY: sdk-lint
+
+sdk-publish:
+	@echo "Publishing ..."
+	@(cd sdk && rm -R -f dist)
+	@(cd sdk && npm run build)
+	@(cd sdk && npx npm-publish --token $(NPM_TOKEN)) 
+.PHONY: sdk-publish
