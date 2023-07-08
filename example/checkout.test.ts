@@ -7,7 +7,7 @@ const checkoutURL = 'http://localhost:8808/checkout';
 const mockServer = new Server('http://localhost:8896');
 
 describe('test /checkout using raw JSON to create stub', () => {
-  it('card number is matched, return predefined body in stub', async () => {
+  test('card number is matched, return predefined body in stub', async () => {
     // Create random data
     const validCardNumber = uuidv4();
     const expectedId = uuidv4();
@@ -55,7 +55,7 @@ describe('test /checkout using raw JSON to create stub', () => {
     expect(data.response.id).toBe(expectedId);
   });
 
-  it('card number is not matched, no response from 3rd party', async () => {
+  test('card number is not matched, no response from 3rd party', async () => {
     const invalidCardNumber = uuidv4();
 
     const params = { cardNumber: invalidCardNumber, amount: 30000 };

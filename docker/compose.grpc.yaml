@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   rio-http:
-    image: hungdv136/rio:v1.2.3
+    image: hungdv136/rio:v1.2.4
     pull_policy: always
     healthcheck:
       test: curl --fail http://localhost:8896/ping || exit 1

@@ -8,7 +8,7 @@ import {
   URLEncodedBodyRule
 } from './matching-rule';
 import { Stub, StubProxy, StubSettings } from './stub';
-import { Server } from './server';
+import { Server, Proto } from './server';
 import {
   JSONResponse,
   HTMLResponse,
@@ -42,6 +42,7 @@ export {
   StubProxy,
   StubSettings,
   Server,
+  Proto,
   JSONResponse,
   HTMLResponse,
   XMLResponse,
