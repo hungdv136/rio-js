@@ -1,7 +1,7 @@
 {
   "name": "rio-ts-sdk",
   "description": "TypeScript SDK to mock HTTP and gPRC dependency",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint . --ext .ts",
