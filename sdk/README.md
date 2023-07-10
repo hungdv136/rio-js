@@ -5,7 +5,7 @@ This is TypeScript SDK for [Rio](https://github.com/hungdv136/rio) HTTP/gRPC moc
 ## Prerequisites
 
 - NodeJS v18+
-- Rio Mmck server v1.2.3+: See [example](../example/README.md) to how to deploy locally
+- Rio mock server v1.2.3+: See [example](../example/README.md) to how to deploy locally
 
 ## How to use 
 
@@ -16,6 +16,8 @@ npm install rio-ts-sdk
 Avaliable features/syntax are documented in [Rio](httts://github.com/hungdv136/rio)
 
 ## Examples
+
+1. Build stub using SDK
 
 ```ts
 import { Rule, JSONPathRule, JSONResponse, Stub } from 'rio-ts-sdk';
@@ -48,7 +50,9 @@ it('checkout API', () => {
 
 See [example](../example/checkout-sdk.test.ts) for end to end example
 
-## Dynamic Response
+2. Dynamic Response
+
+This illustrates how to write dynamic response. This is helpful for manual testing. If you are writing integration tests by JS/TS, **it is recommended** to build response using JS/TS SDK since it is more flexible and also easier to debug
 
 ```ts
     // The response can be built programmatically based on the request 
@@ -82,3 +86,16 @@ See [example](../example/checkout-sdk.test.ts) for end to end example
 
 See [example](../example/sdk-install.test.ts) for end to end example of dynamic response
 
+## Development
+
+Run the below command at project root to run unit test
+
+```bash
+make sdk-test
+```
+
+Before commit code, run this command to format code and check lint
+
+```bash
+make sdk-all
+```
